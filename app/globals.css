@@ -73,3 +73,53 @@ html {
   }
 }
 
+/* Fade-in animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fade-in-delay-1 {
+  animation: fadeIn 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fadeIn 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay-3 {
+  animation: fadeIn 0.8s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 8s ease-in-out infinite;
+}
+
+.animate-pulse-slow-delay {
+  animation: pulseSlow 8s ease-in-out 2s infinite;
+}
+
