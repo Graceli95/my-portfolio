@@ -38,6 +38,6 @@ export const siteConfig = {
   tagline: "Building scalable web applications with clean code and AI-powered engineering",
   
   // Languages
-  languages: ["English (Fluent)", "Chinese/Mandarin (Fluent)"],
+  languages: ["English (Fluent)", "Chinese/Mandarin (Native)"],
 };
 
