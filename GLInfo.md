@@ -42,14 +42,14 @@ Each card:
 
 # **2️⃣ About Page (/about)**
 
-### **A. Career Summary**
+### **A. About Me Section**
 
 Professional bio highlighting:
-- First-generation immigrant background
-- Full-stack development expertise (Java, Spring Boot, REST APIs, MySQL, React)
-- AI application development experience (Python, FastAPI, LangChain, MongoDB)
-- Commitment to bridging traditional software development with emerging AI technologies
-- Problem-solving skills, adaptability, and passion for continuous learning
+- First-generation immigrant with a passion for technology and problem-solving
+- Full-stack development expertise (Java, Spring Boot, React)
+- AI application development experience (Python, FastAPI, LangChain)
+- Background in operations, education, and customer-facing roles
+- Unique perspectives on building user-focused solutions
 
 ### **B. Areas of Expertise**
 

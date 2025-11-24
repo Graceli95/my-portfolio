@@ -27,28 +27,9 @@ export default function AboutPage() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary-600 via-primary-500 to-secondary-500 dark:from-primary-400 dark:via-primary-300 dark:to-secondary-400 bg-clip-text text-transparent">
               About Me
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400">
-              {siteConfig.about.mission}
+            <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+              {siteConfig.about.bio}
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Career Summary */}
-      <section className="py-16 bg-white dark:bg-gray-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-              Career Summary
-            </h2>
-            <div className="prose prose-lg dark:prose-invert mx-auto">
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                {siteConfig.about.bio}
-              </p>
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                {siteConfig.about.mission}
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -156,24 +137,22 @@ export default function AboutPage() {
                           {edu.institution}
                         </h3>
                         <p className="text-primary-600 dark:text-primary-400 font-semibold">
-                          {edu.degree} - {edu.field}
+                          {edu.field}
                         </p>
                       </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400 mt-2 sm:mt-0">
-                        {edu.date}
+                      <div className="text-sm text-gray-600 dark:text-gray-400 mt-2 sm:mt-0 text-right">
+                        <p>{edu.location}</p>
+                        <p>{edu.date}</p>
                       </div>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-3">
-                      {edu.location}
-                    </p>
                     {edu.highlights && (
                       <ul className="space-y-2">
                         {edu.highlights.map((highlight, hIndex) => (
                           <li
                             key={hIndex}
-                            className="flex items-start gap-2 text-gray-700 dark:text-gray-300"
+                            className="flex items-center gap-2 text-gray-700 dark:text-gray-300"
                           >
-                            <span className="text-secondary-500 mt-1">•</span>
+                            <span className="text-secondary-500 flex-shrink-0">•</span>
                             <span className="text-sm">{highlight}</span>
                           </li>
                         ))}
