@@ -100,7 +100,7 @@ export default function AboutPage() {
                   {skillGroup.items.map((skill, skillIndex) => (
                     <span
                       key={skillIndex}
-                      className="px-4 py-2 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-medium rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+                      className="px-4 py-2 bg-primary-500 dark:bg-primary-600 text-white font-medium rounded-lg shadow-md hover:shadow-lg hover:bg-primary-600 dark:hover:bg-primary-700 transform hover:-translate-y-0.5 transition-all duration-200"
                     >
                       {skill}
                     </span>
@@ -137,7 +137,7 @@ export default function AboutPage() {
                           {edu.institution}
                         </h3>
                         <p className="text-primary-600 dark:text-primary-400 font-semibold">
-                          {edu.field}
+                          {edu.degree} - {edu.field}
                         </p>
                       </div>
                       <div className="text-sm text-gray-600 dark:text-gray-400 mt-2 sm:mt-0 text-right">

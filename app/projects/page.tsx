@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { projects } from "@/config/projectsData";
 import ProjectCard from "@/components/projects/ProjectCard";
 import { Github, ExternalLink, Code2, Layers, Filter } from "lucide-react";
@@ -143,9 +144,20 @@ export default function ProjectsPage() {
                     className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-200 dark:border-gray-700"
                   >
                     {/* Project Image */}
-                    <div className="relative h-48 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/20 dark:to-secondary-900/20 flex items-center justify-center overflow-hidden">
-                      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-200/30 via-transparent to-secondary-200/30"></div>
-                      <Code2 className="w-20 h-20 text-primary-300 dark:text-primary-700" />
+                    <div className="relative h-48 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/20 dark:to-secondary-900/20 overflow-hidden group">
+                      {project.image ? (
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <Code2 className="w-20 h-20 text-primary-300 dark:text-primary-700" />
+                        </div>
+                      )}
                     </div>
 
                     {/* Project Content */}
@@ -179,7 +191,7 @@ export default function ProjectsPage() {
                           {project.technologies.map((tech) => (
                             <span
                               key={tech}
-                              className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-full shadow-sm hover:shadow-md transition-shadow duration-200"
+                              className="px-3 py-1 text-xs font-medium bg-primary-500 dark:bg-primary-600 text-white rounded-full shadow-sm hover:shadow-md hover:bg-primary-600 dark:hover:bg-primary-700 transition-all duration-200"
                             >
                               {tech}
                             </span>
@@ -194,10 +206,10 @@ export default function ProjectsPage() {
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200 shadow-md hover:shadow-lg"
+                            className="flex items-center justify-center gap-2 px-5 py-2.5 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-all duration-200 shadow-md hover:shadow-xl hover:-translate-y-0.5"
                           >
                             <Github className="w-4 h-4" />
-                            <span className="text-sm font-medium">View Code</span>
+                            <span className="text-sm font-semibold">View Code</span>
                           </a>
                         )}
                         {project.demo && (
@@ -205,10 +217,10 @@ export default function ProjectsPage() {
                             href={project.demo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-500 text-white rounded-lg hover:from-primary-700 hover:to-secondary-600 transition-all duration-200 shadow-md hover:shadow-lg"
+                            className="flex items-center justify-center gap-2 px-5 py-2.5 bg-primary-600 dark:bg-primary-500 text-white rounded-lg hover:bg-primary-700 dark:hover:bg-primary-600 transition-all duration-200 shadow-md hover:shadow-xl hover:-translate-y-0.5"
                           >
                             <ExternalLink className="w-4 h-4" />
-                            <span className="text-sm font-medium">Live Demo</span>
+                            <span className="text-sm font-semibold">Live Demo</span>
                           </a>
                         )}
                       </div>

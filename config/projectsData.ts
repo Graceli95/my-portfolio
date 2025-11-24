@@ -29,7 +29,7 @@ export const projects: Project[] = [
   },
   {
     id: "vitality-hub",
-    title: "Vitality Hub - Fitness Tracking Platform",
+    title: "Vitality Hub - Fitness Tracking",
     description: "Full-stack fitness app with workout tracking and progress analytics",
     fullDescription: [
       "Built scalable full-stack fitness app with Spring Boot and MySQL",

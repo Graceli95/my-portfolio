@@ -47,7 +47,7 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent hover:from-primary-500 hover:to-secondary-400 transition-all"
+            className="text-2xl font-bold text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 transition-all"
           >
             {siteConfig.name}
           </Link>
@@ -71,7 +71,7 @@ export default function Header() {
             {/* Dark Mode Toggle - Desktop */}
             <button
               onClick={toggleDarkMode}
-              className="ml-4 p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="ml-4 p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors min-w-[40px] min-h-[40px] flex items-center justify-center"
               aria-label="Toggle dark mode"
             >
               {darkMode ? (
@@ -108,15 +108,15 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <div className="flex items-center space-x-2 md:hidden">
-            {/* Dark Mode Toggle - Mobile */}
+            {/* Dark Mode Toggle - Mobile - Enhanced touch target (44x44px min) */}
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="p-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Toggle dark mode"
             >
               {darkMode ? (
                 <svg
-                  className="w-5 h-5"
+                  className="w-6 h-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -130,7 +130,7 @@ export default function Header() {
                 </svg>
               ) : (
                 <svg
-                  className="w-5 h-5"
+                  className="w-6 h-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -145,10 +145,10 @@ export default function Header() {
               )}
             </button>
 
-            {/* Hamburger Button */}
+            {/* Hamburger Button - Enhanced touch target (44x44px min) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="p-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
