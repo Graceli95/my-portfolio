@@ -29,7 +29,7 @@ export const siteConfig = {
   
   // About Section
   about: {
-    bio: `I am a first-generation immigrant with a passion for technology, problem-solving, and building meaningful digital experiences. I specialize in full-stack development using Java, Spring Boot, and React, and I'm expanding my expertise into AI-powered applications with Python, FastAPI, and LangChain. My background in operations, education, and customer-facing roles allows me to approach engineering with empathy and a strong focus on usability, reliability, and real-world impact.`,
+    bio: `I am a first-generation immigrant with a passion for technology, problem-solving, and building meaningful digital experiences. I specialize in full-stack development using Java, Spring Boot, and React, and I'm expanding my expertise into AI-powered applications with Python, FastAPI, and LangChain. My journey from operations and education into tech has shaped how I approach engineering—with empathy, adaptability, and a focus on building solutions that create real-world impact. I'm passionate about continuous learning and translating complex technical challenges into reliable, user-centered applications.`,
   },
   
   // Professional Tagline

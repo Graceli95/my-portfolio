@@ -11,7 +11,7 @@ import {
   certifications,
   volunteerExperience
 } from "@/config/skillsData";
-import { Download, Briefcase, GraduationCap, Award, Heart, Globe } from "lucide-react";
+import { Download, Briefcase, GraduationCap, Award, Heart, Globe, ExternalLink } from "lucide-react";
 
 export default function AboutPage() {
   return (
@@ -23,13 +23,18 @@ export default function AboutPage() {
         </div>
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary-600 via-primary-500 to-secondary-500 dark:from-primary-400 dark:via-primary-300 dark:to-secondary-400 bg-clip-text text-transparent">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-primary-600 via-primary-500 to-secondary-500 dark:from-primary-400 dark:via-primary-300 dark:to-secondary-400 bg-clip-text text-transparent">
               About Me
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
-              {siteConfig.about.bio}
-            </p>
+            <div className="space-y-6 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p>
+                I am a first-generation immigrant with a passion for technology, problem-solving, and building meaningful digital experiences. I specialize in full-stack development using Java, Spring Boot, and React, and I&apos;m expanding my expertise into AI-powered applications with Python, FastAPI, and LangChain.
+              </p>
+              <p>
+                My journey from operations and education into tech has shaped how I approach engineering—with empathy, adaptability, and a focus on building solutions that create real-world impact. I&apos;m passionate about continuous learning and translating complex technical challenges into reliable, user-centered applications.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -242,6 +247,17 @@ export default function AboutPage() {
                     <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
                       {cert.date}
                     </p>
+                    {cert.credentialUrl && (
+                      <a
+                        href={cert.credentialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 mt-3 text-xs text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium transition-colors"
+                      >
+                        View Credential
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

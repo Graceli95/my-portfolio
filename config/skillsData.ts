@@ -24,6 +24,7 @@ export interface Certification {
   name: string;
   issuer: string;
   date: string;
+  credentialUrl?: string;
 }
 
 export const technicalSkills: Skill[] = [
@@ -182,26 +183,31 @@ export const certifications: Certification[] = [
     name: "Certificate in ASU AZNext Vibe Coding AI Builder Architect",
     issuer: "Arizona State University",
     date: "Dec 2025",
+    // credentialUrl: "/certifications/asu-ai-builder.pdf", // Add your certificate file to show link
   },
   {
     name: "Certificate in Agentic AI for Developers",
     issuer: "Pluralsight",
     date: "Nov 2025",
+    // credentialUrl: "/certifications/pluralsight-agentic-ai.pdf", // Add your certificate file to show link
   },
   {
     name: "Certificate in Java Full Stack Development",
     issuer: "Per Scholas",
     date: "Mar 2025",
+    credentialUrl: "/certifications/per-scholas-java.jpg",
   },
   {
     name: "Certificate in Programming for Everybody",
     issuer: "University of Michigan",
     date: "July 2024",
+    credentialUrl: "/certifications/umich-programming.pdf",
   },
   {
     name: "Certificate in AI for Everyone",
     issuer: "DeepLearning.AI",
     date: "June 2024",
+    credentialUrl: "/certifications/deeplearning-ai.pdf",
   },
 ];
 
