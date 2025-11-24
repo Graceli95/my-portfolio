@@ -127,7 +127,7 @@ export default function Home() {
             Ready to collaborate on your next project?
           </h2>
           <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-            Let&apos;s build something amazing together. I&apos;m always open to discussing new opportunities and ideas.
+            Let&apos;s create something amazing together. I&apos;m always open to discussing new opportunities and ideas.
           </p>
           <Link
             href="/contact"

@@ -9,10 +9,10 @@ Below is the updated structure incorporating all current information from your r
 ### **A. Hero Section**
 
 - Your name: **Grace Li**
-- Subtitle: **Software Engineer | Full-Stack Developer & AI Solutions Builder**
+- Subtitle: **Full-Stack Engineer | AI Application Developer**
 - Short summary (2 lines):
 
-> Software Engineer building scalable web applications with Java, Spring Boot, React, and AI-powered tools. Bridging traditional software development with emerging AI technologies through hands-on experience in LLM integration and multi-agent systems.
+> I build intelligent web applications that solve real problems. My work combines the reliability of full-stack development—Java, Spring Boot, React, with cutting-edge AI capabilities including LLM integration, multi-agent systems, and RAG implementations.
 
 - Buttons:
   - **View Projects**
@@ -35,8 +35,9 @@ Each card:
 
 ### **C. Quick Contact CTA**
 
-- "Ready to collaborate on your next project?"
-- Button linking to Contact page
+- "Ready to work together?"
+- "Let's create something amazing together. I'm always open to discussing new opportunities and ideas."
+- Button: **Get In Touch** linking to Contact page
 
 ---
 
@@ -44,12 +45,9 @@ Each card:
 
 ### **A. About Me Section**
 
-Professional bio highlighting:
-- First-generation immigrant with a passion for technology and problem-solving
-- Full-stack development expertise (Java, Spring Boot, React)
-- AI application development experience (Python, FastAPI, LangChain)
-- Background in operations, education, and customer-facing roles
-- Unique perspectives on building user-focused solutions
+Professional bio:
+
+> I am a first-generation immigrant with a passion for technology, problem-solving, and building meaningful digital experiences. I specialize in full-stack development using Java, Spring Boot, and React, and I'm expanding my expertise into AI-powered applications with Python, FastAPI, and LangChain. My background in operations, education, and customer-facing roles allows me to approach engineering with empathy and a strong focus on usability, reliability, and real-world impact.
 
 ### **B. Areas of Expertise**
 
@@ -88,7 +86,7 @@ Git, GitHub, IntelliJ IDE, VS Code, Cursor IDE, Microsoft Office 365, Excel, Not
 ### **D. Education & Training**
 
 **Arizona State University** - *Online*  
-**Certificate** - ASU Vibe Coding AI Builder Architect Training Program  
+ASU Vibe Coding AI Builder Architect Training Program  
 *Sep 2025 - Dec 2025*
 - Advanced AI application development
 - LLM integration and multi-agent systems
@@ -96,7 +94,7 @@ Git, GitHub, IntelliJ IDE, VS Code, Cursor IDE, Microsoft Office 365, Excel, Not
 - Context-driven orchestration and workflow automation
 
 **Year Up United** - *Online*  
-**Certificate** - IT Support Training  
+IT Support Training  
 *Sep 2025 - July 2026*
 - Intensive career development program
 - Technical training: Computer Architecture, Device Management, Network Configuration, Desktop Management, Troubleshooting, Technical Documentation
@@ -104,14 +102,14 @@ Git, GitHub, IntelliJ IDE, VS Code, Cursor IDE, Microsoft Office 365, Excel, Not
 - Corporate internship experience
 
 **Per Scholas** - *Online*  
-**Certificate** - Java Full Stack Development Bootcamp  
+Java Full Stack Development Bootcamp  
 *Nov 2024 - Mar 2025*
 - Java, Spring Boot, React, JavaScript
 - Git, GitHub, JUnit, ORM, SQL, MySQL, RESTful APIs
 - Real-world projects and team collaboration
 
 **Solely Coding Bootcamp** - *Online*  
-**Certificate** - Web Development  
+Web Development  
 *March 2024*
 - JavaScript, HTML, CSS, jQuery, React, Redux, Git
 
@@ -161,9 +159,12 @@ Git, GitHub, IntelliJ IDE, VS Code, Cursor IDE, Microsoft Office 365, Excel, Not
 
 Fluent in Chinese (Mandarin) and English
 
-### **I. Resume Download**
+### **I. Resume Download CTA**
 
-- Button: **Download My Resume (PDF)**
+- Headline: "Ready to work together?"
+- Description: "Let's create something amazing together. I'm always open to discussing new opportunities and ideas."
+- Primary Button: **Get In Touch** (links to /contact)
+- Secondary Button: **Download Resume** (downloads PDF)
 
 ---
 
@@ -184,7 +185,7 @@ Fluent in Chinese (Mandarin) and English
 
 ---
 
-### **💪 Vitality Hub - Fitness Tracking Platform**
+### **💪 Vitality Hub - Fitness Tracking**
 
 **Technologies:** Java, Spring Boot, React (Vite), MySQL, RESTful APIs, React Router, React Charts
 
@@ -338,7 +339,7 @@ Button: **Let's Connect**
 
 ### **C. Professional Tagline**
 
-"Bridging traditional software development with emerging AI technologies"
+"Let's create something amazing together."
 
 ---
 
@@ -361,8 +362,9 @@ Button: **Let's Connect**
 
 - Copyright © 2025 Grace Li
 - Social Links: [LinkedIn](https://www.linkedin.com/in/grace-li-com/) | [GitHub](https://github.com/Graceli95) | [graceli9095@gmail.com](mailto:graceli9095@gmail.com)
-- Quick Links: Home | About | Projects | Contact
-- Tagline: "Building scalable web applications with clean code and AI-powered engineering"
+- Quick Links: Home | About | Projects | FAQ | Events | Contact
+- Tagline: "Building intelligent applications where reliability meets innovation"
+- Call-to-Action: "Let's create something amazing together."
 
 ---
 

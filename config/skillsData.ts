@@ -82,7 +82,7 @@ export const areasOfExpertise = {
 export const education: Education[] = [
   {
     institution: "Arizona State University",
-    degree: "Certificate",
+    degree: "",
     field: "ASU Vibe Coding AI Builder Architect Training Program",
     location: "Online",
     date: "Sep 2025 - Dec 2025",
@@ -95,7 +95,7 @@ export const education: Education[] = [
   },
   {
     institution: "Year Up United",
-    degree: "Certificate",
+    degree: "",
     field: "IT Support Training",
     location: "Online",
     date: "Sep 2025 - July 2026",
@@ -108,7 +108,7 @@ export const education: Education[] = [
   },
   {
     institution: "Per Scholas",
-    degree: "Certificate",
+    degree: "",
     field: "Java Full Stack Development Bootcamp",
     location: "Online",
     date: "Nov 2024 - Mar 2025",
@@ -120,7 +120,7 @@ export const education: Education[] = [
   },
   {
     institution: "Solely Coding Bootcamp",
-    degree: "Certificate",
+    degree: "",
     field: "Web Development",
     location: "Online",
     date: "March 2024",
