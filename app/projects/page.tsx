@@ -144,13 +144,13 @@ export default function ProjectsPage() {
                     className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-200 dark:border-gray-700"
                   >
                     {/* Project Image */}
-                    <div className="relative h-48 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/20 dark:to-secondary-900/20 overflow-hidden group">
+                    <div className="relative h-60 bg-gray-50 dark:bg-gray-900 overflow-hidden group">
                       {project.image ? (
                         <Image
                           src={project.image}
                           alt={project.title}
                           fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="object-contain group-hover:scale-105 transition-transform duration-300"
                           sizes="(max-width: 768px) 100vw, 50vw"
                         />
                       ) : (

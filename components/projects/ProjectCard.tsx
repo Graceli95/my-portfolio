@@ -10,13 +10,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <div className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600">
       {/* Project Image */}
-      <div className="relative h-48 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/30 dark:to-secondary-900/30 overflow-hidden">
+      <div className="relative h-60 bg-gray-50 dark:bg-gray-900 overflow-hidden">
         {project.image ? (
           <Image
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-contain group-hover:scale-105 transition-transform duration-300"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             onError={(e) => {
               // Fallback to gradient if image fails to load
