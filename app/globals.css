@@ -46,7 +46,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #a855f7;
+  background: #a855f7; /* Purple accent - kept for brand consistency */
   border-radius: 5px;
 }
 
@@ -60,7 +60,7 @@ html {
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #c084fc;
+  background: #c084fc; /* Lighter purple for dark mode */
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
@@ -121,5 +121,31 @@ html {
 
 .animate-pulse-slow-delay {
   animation: pulseSlow 8s ease-in-out 2s infinite;
+}
+
+/* Horizontal scroll container styling */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
 }
 

@@ -2,11 +2,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { events, eventCategories } from "@/config/eventsData";
 import { Calendar, MapPin, Users, Award, Code, Rocket, ExternalLink } from "lucide-react";
+import ImageLightbox from "@/components/events/ImageLightbox";
 
 export default function EventsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [lightboxEventTitle, setLightboxEventTitle] = useState("");
 
   // Filter events by category
   const filteredEvents = selectedCategory === "all"
@@ -24,6 +30,26 @@ export default function EventsPage() {
     hackathon: Code,
     community: Users,
     professional: Rocket,
+  };
+
+  // Lightbox handlers
+  const openLightbox = (images: string[], index: number, eventTitle: string) => {
+    setLightboxImages(images);
+    setLightboxIndex(index);
+    setLightboxEventTitle(eventTitle);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
+
+  const nextImage = () => {
+    setLightboxIndex((prev) => (prev + 1) % lightboxImages.length);
+  };
+
+  const previousImage = () => {
+    setLightboxIndex((prev) => (prev - 1 + lightboxImages.length) % lightboxImages.length);
   };
 
   return (
@@ -136,54 +162,85 @@ export default function EventsPage() {
                       key={event.id}
                       className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                     >
-                      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                        {/* Event Content */}
-                        <div className="flex-1">
-                          {/* Category Badge & Icon */}
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/30 dark:to-secondary-900/30 rounded-lg p-2">
-                              <Icon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                      <div className="flex flex-col gap-4">
+                        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                          {/* Event Content */}
+                          <div className="flex-1">
+                            {/* Category Badge & Icon */}
+                            <div className="flex items-center gap-3 mb-3">
+                              <div className="bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/30 dark:to-secondary-900/30 rounded-lg p-2">
+                                <Icon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                              </div>
+                              <span className="px-3 py-1 text-xs font-semibold bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-full">
+                                {eventCategories[event.category].label}
+                              </span>
                             </div>
-                            <span className="px-3 py-1 text-xs font-semibold bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-full">
-                              {eventCategories[event.category].label}
-                            </span>
+
+                            {/* Title */}
+                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                              {event.title}
+                            </h3>
+
+                            {/* Description */}
+                            <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                              {event.description}
+                            </p>
+
+                            {/* Date & Location */}
+                            <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
+                              <div className="flex items-center gap-2">
+                                <Calendar className="w-4 h-4 text-primary-600 dark:text-primary-400" />
+                                <span>{event.date}</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <MapPin className="w-4 h-4 text-secondary-600 dark:text-secondary-400" />
+                                <span>{event.location}</span>
+                              </div>
+                            </div>
                           </div>
 
-                          {/* Title */}
-                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                            {event.title}
-                          </h3>
-
-                          {/* Description */}
-                          <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-                            {event.description}
-                          </p>
-
-                          {/* Date & Location */}
-                          <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
-                            <div className="flex items-center gap-2">
-                              <Calendar className="w-4 h-4 text-primary-600 dark:text-primary-400" />
-                              <span>{event.date}</span>
+                          {/* Link (if available) */}
+                          {event.link && (
+                            <div className="md:self-center">
+                              <a
+                                href={event.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-500 text-white rounded-lg hover:from-primary-700 hover:to-secondary-600 transition-all duration-200 shadow-md hover:shadow-lg"
+                              >
+                                <span className="text-sm font-medium">Learn More</span>
+                                <ExternalLink className="w-4 h-4" />
+                              </a>
                             </div>
-                            <div className="flex items-center gap-2">
-                              <MapPin className="w-4 h-4 text-secondary-600 dark:text-secondary-400" />
-                              <span>{event.location}</span>
-                            </div>
-                          </div>
+                          )}
                         </div>
 
-                        {/* Link (if available) */}
-                        {event.link && (
-                          <div className="md:self-center">
-                            <a
-                              href={event.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-500 text-white rounded-lg hover:from-primary-700 hover:to-secondary-600 transition-all duration-200 shadow-md hover:shadow-lg"
-                            >
-                              <span className="text-sm font-medium">Learn More</span>
-                              <ExternalLink className="w-4 h-4" />
-                            </a>
+                        {/* Horizontal Scroll Image Gallery (if images available) */}
+                        {event.images && event.images.length > 0 && (
+                          <div className="mt-4 border-t border-gray-200 dark:border-gray-700 pt-4">
+                            <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
+                              {event.images.map((image, index) => (
+                                <button
+                                  key={index}
+                                  onClick={() => openLightbox(event.images!, index, event.title)}
+                                  className="flex-shrink-0 w-64 h-48 relative rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-600 hover:border-primary-500 dark:hover:border-primary-400 transition-all duration-300 hover:shadow-lg group cursor-pointer"
+                                  aria-label={`View ${event.title} - Image ${index + 1}`}
+                                >
+                                  <Image
+                                    src={image}
+                                    alt={`${event.title} - Image ${index + 1}`}
+                                    fill
+                                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                  />
+                                  {/* Click hint overlay */}
+                                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 dark:bg-gray-800/90 rounded-full px-3 py-1 text-xs font-medium text-gray-900 dark:text-white">
+                                      Click to view
+                                    </div>
+                                  </div>
+                                </button>
+                              ))}
+                            </div>
                           </div>
                         )}
                       </div>
@@ -235,6 +292,18 @@ export default function EventsPage() {
           </Link>
         </div>
       </section>
+
+      {/* Image Lightbox */}
+      {lightboxOpen && (
+        <ImageLightbox
+          images={lightboxImages}
+          currentIndex={lightboxIndex}
+          onClose={closeLightbox}
+          onNext={nextImage}
+          onPrevious={previousImage}
+          eventTitle={lightboxEventTitle}
+        />
+      )}
     </div>
   );
 }
