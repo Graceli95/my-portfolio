@@ -5,6 +5,8 @@ export interface Project {
   fullDescription: string[];
   technologies: string[];
   image: string;
+  images: string[];
+  imageDescriptions?: string[];
   github?: string;
   demo?: string;
   featured: boolean;
@@ -24,12 +26,24 @@ export const projects: Project[] = [
     ],
     technologies: ["Python", "FastAPI", "Next.js", "TypeScript", "MongoDB", "LangChain", "ChromaDB", "Tailwind CSS"],
     image: "/images/projects/jobportal.png",
+    images: [
+      "/images/projects/jobportal-LandingPage.png",
+      "/images/projects/jobportal.png",
+      "/images/projects/jobportal-jobseeker-dashboard.png",
+      "/images/projects/jobportal-ai-matching.png"
+    ],
+    imageDescriptions: [
+      "Landing Page - Welcome to WorkWise Job Portal Platform",
+      "Main Dashboard - Job Search and Listings Interface",
+      "Job Seeker Dashboard - Personalized Job Recommendations",
+      "AI-Powered Matching - Intelligent Candidate-Job Matching System"
+    ],
     github: "https://github.com/AZVibe-Team1/Greenfield-project",
     featured: true,
   },
   {
     id: "vitality-hub",
-    title: "Vitality Hub - Fitness Tracking",
+    title: "Vitality Hub - Fitness Tracking Platform",
     description: "Full-stack fitness app with workout tracking and progress analytics",
     fullDescription: [
       "Built scalable full-stack fitness app with Spring Boot and MySQL",
@@ -38,8 +52,18 @@ export const projects: Project[] = [
       "Real-time workout data analytics with React Charts",
       "Responsive, intuitive UI for seamless fitness-tracking experience across devices",
     ],
-    technologies: ["Java", "Spring Boot", "React", "Vite", "MySQL", "RESTful APIs", "React Router", "React Charts"],
+    technologies: ["Java", "Spring Boot", "React", "MySQL", "RESTful APIs", "React Router", "React Charts"],
     image: "/images/projects/vitality-hub.png",
+    images: [
+      "/images/projects/vitality-hub.png",
+      "/images/projects/vitality-hub-page.png",
+      "/images/projects/vitality-hub-activity.png"
+    ],
+    imageDescriptions: [
+      "Analytics Dashboard - Progress Tracking with Interactive Charts",
+      "Workout Overview - Comprehensive Exercise History and Metrics",
+      "Activity Logging - Easy Exercise Entry and Management"
+    ],
     github: "https://github.com/Graceli95/ExerciseTrackerServer",
     demo: "https://drive.google.com/file/d/1ZBChajp7u8orKeLjo9P_Vpg5t6_BMF0x/view",
     featured: true,
@@ -57,6 +81,8 @@ export const projects: Project[] = [
     ],
     technologies: ["React", "Redux", "Material UI", "JavaScript"],
     image: "/images/projects/ecommerce.png",
+    images: ["/images/projects/ecommerce.png"],
+    imageDescriptions: ["Eyeglass E-commerce - Product Catalog"],
     github: "https://github.com/Graceli95/E-commerce-website",
     demo: "https://graceli95.github.io/e-commerce/",
     featured: true,
@@ -73,6 +99,8 @@ export const projects: Project[] = [
     ],
     technologies: ["JavaScript", "HTML", "CSS"],
     image: "/images/projects/covilla.png",
+    images: ["/images/projects/covilla.png"],
+    imageDescriptions: ["Covilla Travel Agency - Destination Explorer"],
     github: "https://github.com/Graceli95/travel-agency",
     demo: "https://graceli95.github.io/travel-agency",
     featured: true,
