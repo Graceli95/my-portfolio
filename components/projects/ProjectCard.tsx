@@ -1,5 +1,8 @@
+'use client';
+
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Project } from "@/config/projectsData";
 import { Github } from "lucide-react";
 
@@ -10,7 +13,17 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, onImageClick }: ProjectCardProps) {
   return (
-    <div className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ y: -8, transition: { duration: 0.2 } }}
+      className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-secondary-300 dark:hover:border-secondary-600"
+    >
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-secondary-500/5 to-secondary-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      
       {/* Project Image */}
       <div 
         className={`relative h-60 bg-gray-50 dark:bg-gray-900 overflow-hidden ${onImageClick ? 'cursor-pointer' : ''}`}
@@ -74,7 +87,7 @@ export default function ProjectCard({ project, onImageClick }: ProjectCardProps)
         <div className="flex gap-2 justify-center">
           <Link
             href={`/projects#${project.id}`}
-            className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm hover:shadow-md"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white text-sm font-medium rounded-lg transition-all shadow-sm hover:shadow-md"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -87,7 +100,7 @@ export default function ProjectCard({ project, onImageClick }: ProjectCardProps)
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 border-2 border-gray-300 dark:border-gray-600 hover:border-primary-500 dark:hover:border-primary-500 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 rounded-lg transition-all hover:bg-gray-50 dark:hover:bg-gray-700"
+              className="p-2 border-2 border-gray-300 dark:border-gray-600 hover:border-secondary-500 dark:hover:border-secondary-500 text-gray-700 dark:text-gray-300 hover:text-secondary-600 dark:hover:text-secondary-400 rounded-lg transition-all hover:bg-gray-50 dark:hover:bg-gray-700"
               aria-label="View GitHub repository"
             >
               <Github className="w-5 h-5" />
@@ -95,6 +108,6 @@ export default function ProjectCard({ project, onImageClick }: ProjectCardProps)
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

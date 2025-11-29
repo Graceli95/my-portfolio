@@ -25,6 +25,7 @@ export interface Certification {
   issuer: string;
   date: string;
   credentialUrl?: string;
+  credentialLabel?: string;
 }
 
 export const technicalSkills: Skill[] = [
@@ -150,9 +151,9 @@ export const experience: Experience[] = [
     location: "Washington DC",
     date: "Dec 2019 - Dec 2020",
     responsibilities: [
-      "Managed complex schedules and solved challenges with efficiency",
-      "Designed personalized educational plans",
-      "Strengthened cross-cultural communication",
+      "Managed complex daily schedules and solved unexpected challenges with efficiency and adaptability",
+      "Designed personalized educational plans to support children's growth, development, and Mandarin study",
+      "Strengthened communication skills by collaborating with diverse stakeholders across cultural boundaries, ensuring clarity, satisfaction and positive outcomes",
     ],
   },
   {
@@ -183,7 +184,8 @@ export const certifications: Certification[] = [
     name: "Certificate in ASU AZNext Vibe Coding AI Builder Architect",
     issuer: "Arizona State University",
     date: "Dec 2025",
-    // credentialUrl: "/certifications/asu-ai-builder.pdf", // Add your certificate file to show link
+    credentialUrl: "#",
+    credentialLabel: "Coming Soon",
   },
   {
     name: "Certificate in Agentic AI for Developers",

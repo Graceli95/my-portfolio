@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { events, eventCategories } from "@/config/eventsData";
 import { Calendar, MapPin, Users, Award, Code, Rocket, ExternalLink } from "lucide-react";
 import ImageLightbox from "@/components/events/ImageLightbox";
@@ -85,10 +86,10 @@ export default function EventsPage() {
               {/* All Categories */}
               <button
                 onClick={() => setSelectedCategory("all")}
-                className={`p-4 rounded-xl text-left transition-all duration-200 ${
+                className={`p-4 rounded-xl text-left transition-all duration-200 border-2 ${
                   selectedCategory === "all"
-                    ? "bg-gradient-to-r from-primary-600 to-secondary-500 text-white shadow-lg scale-105"
-                    : "bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    ? "bg-primary-600 text-white shadow-lg scale-105 border-secondary-500"
+                    : "bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700 hover:border-secondary-300"
                 }`}
               >
                 <div className="flex items-center gap-3 mb-2">
@@ -108,10 +109,10 @@ export default function EventsPage() {
                   <button
                     key={key}
                     onClick={() => setSelectedCategory(key)}
-                    className={`p-4 rounded-xl text-left transition-all duration-200 ${
+                    className={`p-4 rounded-xl text-left transition-all duration-200 border-2 ${
                       isActive
-                        ? "bg-gradient-to-r from-primary-600 to-secondary-500 text-white shadow-lg scale-105"
-                        : "bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600"
+                        ? "bg-primary-600 text-white shadow-lg scale-105 border-secondary-500"
+                        : "bg-white dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700 hover:border-secondary-300"
                     }`}
                   >
                     <div className="flex items-center gap-3 mb-2">
@@ -155,12 +156,17 @@ export default function EventsPage() {
             {/* Events List */}
             {filteredEvents.length > 0 ? (
               <div className="space-y-6">
-                {filteredEvents.map((event) => {
+                {filteredEvents.map((event, index) => {
                   const Icon = categoryIcons[event.category];
                   return (
-                    <div
+                    <motion.div
                       key={event.id}
-                      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      whileHover={{ y: -4 }}
+                      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300"
                     >
                       <div className="flex flex-col gap-4">
                         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
@@ -171,7 +177,7 @@ export default function EventsPage() {
                               <div className="bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/30 dark:to-secondary-900/30 rounded-lg p-2">
                                 <Icon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
                               </div>
-                              <span className="px-3 py-1 text-xs font-semibold bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-full">
+                              <span className="px-3 py-1 text-xs font-semibold bg-gradient-to-r from-secondary-600 to-secondary-500 text-white rounded-full">
                                 {eventCategories[event.category].label}
                               </span>
                             </div>
@@ -206,7 +212,7 @@ export default function EventsPage() {
                                 href={event.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-500 text-white rounded-lg hover:from-primary-700 hover:to-secondary-600 transition-all duration-200 shadow-md hover:shadow-lg"
+                                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-200 shadow-md hover:shadow-lg"
                               >
                                 <span className="text-sm font-medium">Learn More</span>
                                 <ExternalLink className="w-4 h-4" />
@@ -244,7 +250,7 @@ export default function EventsPage() {
                           </div>
                         )}
                       </div>
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>
@@ -259,7 +265,7 @@ export default function EventsPage() {
                 </p>
                 <button
                   onClick={() => setSelectedCategory("all")}
-                  className="px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200"
+                  className="px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors duration-200"
                 >
                   View All Events
                 </button>
@@ -270,7 +276,7 @@ export default function EventsPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-primary-600 to-secondary-500 dark:from-primary-700 dark:to-secondary-600">
+      <section className="py-20 bg-gradient-to-r from-primary-700 to-secondary-600 dark:from-primary-800 dark:to-secondary-700">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-6">
             <div className="bg-white/10 rounded-full p-4">
@@ -285,7 +291,7 @@ export default function EventsPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transform hover:-translate-y-0.5 transition-all duration-200 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-primary-700 dark:text-primary-600 font-semibold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 transform hover:-translate-y-0.5 transition-all duration-200 shadow-lg hover:shadow-xl"
           >
             <Users className="w-5 h-5" />
             Let&apos;s Connect

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { faqs } from "@/config/faqData";
 import FAQAccordion from "@/components/faq/FAQAccordion";
 import { MessageCircle, HelpCircle } from "lucide-react";
@@ -43,20 +44,27 @@ export default function FAQPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
             {faqs.map((faq, index) => (
-              <FAQAccordion
+              <motion.div
                 key={faq.id}
-                question={faq.question}
-                answer={faq.answer}
-                isOpen={openIndex === index}
-                onToggle={() => handleToggle(index)}
-              />
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+              >
+                <FAQAccordion
+                  question={faq.question}
+                  answer={faq.answer}
+                  isOpen={openIndex === index}
+                  onToggle={() => handleToggle(index)}
+                />
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-600 to-secondary-500 dark:from-primary-700 dark:to-secondary-600">
+      <section className="py-20 bg-gradient-to-r from-primary-700 to-secondary-600 dark:from-primary-800 dark:to-secondary-700">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-6">
             <div className="bg-white/10 rounded-full p-4">
@@ -71,7 +79,7 @@ export default function FAQPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transform hover:-translate-y-0.5 transition-all duration-200 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-primary-700 dark:text-primary-600 font-semibold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 transform hover:-translate-y-0.5 transition-all duration-200 shadow-lg hover:shadow-xl"
           >
             <MessageCircle className="w-5 h-5" />
             Get In Touch

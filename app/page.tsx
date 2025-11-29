@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { siteConfig } from "@/config/siteConfig";
 import { projects } from "@/config/projectsData";
 import ProjectCard from "@/components/projects/ProjectCard";
@@ -12,44 +13,90 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        {/* Animated Gradient Background */}
+        <motion.div 
+          animate={{ 
+            backgroundPosition: ['0% 0%', '100% 100%'],
+          }}
+          transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse' }}
+          className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+          style={{ backgroundSize: '200% 200%' }}
+        >
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-200/20 via-transparent to-secondary-200/20 dark:from-primary-900/20 dark:to-secondary-900/20"></div>
-        </div>
+        </motion.div>
 
         {/* Content */}
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-4xl mx-auto text-center">
+            {/* Profile Badge with Animation */}
+            <motion.div
+              initial={{ scale: 0, rotate: -180 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ type: 'spring', duration: 1, delay: 0.2 }}
+              className="mb-8 mx-auto w-32 h-32 relative"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-secondary-500 to-secondary-400 rounded-full animate-pulse" />
+              <div className="absolute inset-1 bg-white dark:bg-gray-900 rounded-full" />
+              <div className="absolute inset-2 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-800 dark:to-secondary-800 rounded-full flex items-center justify-center">
+                <span className="text-4xl font-bold bg-gradient-to-r from-secondary-700 to-secondary-500 bg-clip-text text-transparent">GL</span>
+              </div>
+            </motion.div>
+
             {/* Animated Name */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 animate-fade-in text-primary-500 dark:text-primary-400">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary-700 via-secondary-600 to-secondary-400 dark:from-primary-300 dark:via-secondary-400 dark:to-secondary-300"
+            >
               {siteConfig.hero.title}
-            </h1>
+            </motion.h1>
 
             {/* Subtitle */}
-            <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mb-8 font-medium animate-fade-in-delay-1">
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-xl sm:text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mb-8 font-medium"
+            >
               {siteConfig.hero.subtitle}
-            </p>
+            </motion.p>
 
             {/* Professional Summary */}
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-delay-2">
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed"
+            >
               {siteConfig.hero.description}
-            </p>
+            </motion.p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-delay-3">
-              <Link
-                href="/projects"
-                className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 text-center"
-              >
-                {siteConfig.hero.cta.primary}
-              </Link>
-              <Link
-                href="/contact"
-                className="w-full sm:w-auto px-8 py-4 border-2 border-secondary-500 dark:border-secondary-400 text-secondary-600 dark:text-secondary-400 font-semibold rounded-lg hover:bg-secondary-50 dark:hover:bg-secondary-900/20 transform hover:-translate-y-0.5 transition-all duration-200 text-center"
-              >
-                {siteConfig.hero.cta.secondary}
-              </Link>
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  href="/projects"
+                  className="block w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-accent-600 to-accent-500 hover:from-accent-700 hover:to-accent-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 text-center relative overflow-hidden group"
+                >
+                  <span className="relative z-10">{siteConfig.hero.cta.primary}</span>
+                  <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  href="/contact"
+                  className="block w-full sm:w-auto px-8 py-4 border-2 border-secondary-400 dark:border-secondary-500 text-secondary-700 dark:text-secondary-300 font-semibold rounded-lg hover:bg-secondary-50 dark:hover:bg-secondary-900/20 transition-all duration-200 text-center"
+                >
+                  {siteConfig.hero.cta.secondary}
+                </Link>
+              </motion.div>
+            </motion.div>
 
             {/* Scroll Indicator */}
             <div className="mt-16 animate-bounce">
@@ -70,9 +117,17 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Decorative Elements */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary-300/10 dark:bg-primary-600/10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary-300/10 dark:bg-secondary-600/10 rounded-full blur-3xl animate-pulse-slow-delay"></div>
+        {/* Animated Decorative Elements */}
+        <motion.div
+          animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 left-10 w-72 h-72 bg-secondary-300/20 dark:bg-secondary-600/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{ y: [0, 30, 0], x: [0, -20, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-20 right-10 w-96 h-96 bg-primary-300/20 dark:bg-primary-600/20 rounded-full blur-3xl"
+        />
       </section>
 
       {/* Featured Projects Section */}
@@ -99,7 +154,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-gray-800 border-2 border-primary-500 dark:border-primary-400 text-primary-600 dark:text-primary-400 font-semibold rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-gray-800 border-2 border-primary-400 dark:border-primary-500 text-primary-700 dark:text-primary-400 font-semibold rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:border-secondary-500 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg"
             >
               View All Projects
               <svg
@@ -121,7 +176,7 @@ export default function Home() {
       </section>
 
       {/* Quick Contact CTA */}
-      <section className="py-20 bg-gradient-to-r from-primary-600 to-secondary-500 dark:from-primary-700 dark:to-secondary-600">
+      <section className="py-20 bg-gradient-to-r from-primary-700 to-secondary-600 dark:from-primary-800 dark:to-secondary-700">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Ready to collaborate on your next project?
@@ -131,7 +186,7 @@ export default function Home() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transform hover:-translate-y-0.5 transition-all duration-200 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-700 dark:text-primary-600 font-semibold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 transform hover:-translate-y-0.5 transition-all duration-200 shadow-lg hover:shadow-xl"
           >
             Get In Touch
             <svg

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { siteConfig } from "@/config/siteConfig";
 import { 
   technicalSkills, 
@@ -24,7 +25,7 @@ export default function AboutPage() {
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-primary-600 via-primary-500 to-secondary-500 dark:from-primary-400 dark:via-primary-300 dark:to-secondary-400 bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 text-primary-800 dark:text-primary-200">
               About Me
             </h1>
             <div className="space-y-6 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -48,9 +49,15 @@ export default function AboutPage() {
           
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
             {/* Technical Expertise */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-              <h3 className="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-6 flex items-center gap-2">
-                <Briefcase className="w-6 h-6" />
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
+            >
+              <h3 className="text-2xl font-bold text-primary-700 dark:text-primary-300 mb-6 flex items-center gap-2">
+                <Briefcase className="w-6 h-6 text-primary-600 dark:text-primary-400" />
                 Technical Expertise
               </h3>
               <div className="grid grid-cols-1 gap-3">
@@ -59,17 +66,23 @@ export default function AboutPage() {
                     key={index}
                     className="flex items-center gap-3 text-gray-700 dark:text-gray-300"
                   >
-                    <div className="w-2 h-2 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-gradient-to-r from-secondary-600 to-secondary-500 rounded-full"></div>
                     <span>{skill}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Professional Skills */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-              <h3 className="text-2xl font-bold text-secondary-600 dark:text-secondary-400 mb-6 flex items-center gap-2">
-                <Heart className="w-6 h-6" />
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
+            >
+              <h3 className="text-2xl font-bold text-primary-700 dark:text-primary-300 mb-6 flex items-center gap-2">
+                <Heart className="w-6 h-6 text-secondary-600 dark:text-secondary-400" />
                 Professional Skills
               </h3>
               <div className="grid grid-cols-1 gap-3">
@@ -78,12 +91,12 @@ export default function AboutPage() {
                     key={index}
                     className="flex items-center gap-3 text-gray-700 dark:text-gray-300"
                   >
-                    <div className="w-2 h-2 bg-gradient-to-r from-secondary-500 to-primary-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-gradient-to-r from-secondary-600 to-secondary-500 rounded-full"></div>
                     <span>{skill}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -97,21 +110,34 @@ export default function AboutPage() {
           
           <div className="max-w-6xl mx-auto space-y-8">
             {technicalSkills.map((skillGroup, index) => (
-              <div key={index} className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6 shadow-md">
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6 shadow-md"
+              >
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                   {skillGroup.category}
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {skillGroup.items.map((skill, skillIndex) => (
-                    <span
+                    <motion.span
                       key={skillIndex}
-                      className="px-4 py-2 bg-primary-500 dark:bg-primary-600 text-white font-medium rounded-lg shadow-md hover:shadow-lg hover:bg-primary-600 dark:hover:bg-primary-700 transform hover:-translate-y-0.5 transition-all duration-200"
+                      whileHover={{ 
+                        scale: 1.05, 
+                        y: -2,
+                        background: "linear-gradient(135deg, #64748b 0%, #64748b 25%, #0d9488 75%, #a855f7 100%)"
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 font-medium rounded-lg shadow-sm hover:shadow-lg hover:text-white border border-gray-200 dark:border-gray-600 transition-all duration-300 cursor-default"
                     >
                       {skill}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -128,20 +154,42 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
               {education.map((edu, index) => (
-                <div 
+                <motion.div 
                   key={index}
-                  className="relative pl-8 pb-8 border-l-2 border-primary-300 dark:border-primary-700 last:pb-0"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="relative pl-8 pb-8 border-l-4 border-gradient-to-b from-secondary-600 via-primary-500 to-secondary-500 last:pb-0"
+                  style={{ borderImage: 'linear-gradient(to bottom, #0d9488, #64748b, #14b8a6) 1' }}
                 >
-                  {/* Timeline dot */}
-                  <div className="absolute left-0 top-0 -translate-x-[9px] w-4 h-4 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 ring-4 ring-white dark:ring-gray-900"></div>
+                  {/* Animated timeline dot */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    className="absolute left-0 top-0 -translate-x-[11px]"
+                  >
+                    <div className="relative">
+                      <div className="w-5 h-5 rounded-full bg-gradient-to-r from-secondary-600 to-secondary-500 ring-4 ring-white dark:ring-gray-900" />
+                      <motion.div
+                        animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="absolute inset-0 rounded-full bg-secondary-600"
+                      />
+                    </div>
+                  </motion.div>
                   
-                  <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 ml-4 hover:shadow-xl transition-shadow duration-300">
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 ml-4 hover:shadow-xl transition-all duration-300"
+                  >
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
                       <div>
                         <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                           {edu.institution}
                         </h3>
-                        <p className="text-primary-600 dark:text-primary-400 font-semibold">
+                        <p className="text-secondary-600 dark:text-secondary-400 font-semibold">
                           {edu.degree ? `${edu.degree} - ${edu.field}` : edu.field}
                         </p>
                       </div>
@@ -163,8 +211,8 @@ export default function AboutPage() {
                         ))}
                       </ul>
                     )}
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -181,16 +229,21 @@ export default function AboutPage() {
           
           <div className="max-w-4xl mx-auto grid gap-6">
             {experience.map((exp, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -4 }}
+                className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300"
               >
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                       {exp.title}
                     </h3>
-                    <p className="text-secondary-600 dark:text-secondary-400 font-semibold">
+                    <p className="text-primary-700 dark:text-primary-400 font-semibold">
                       {exp.company}
                     </p>
                   </div>
@@ -199,18 +252,20 @@ export default function AboutPage() {
                     <p className="text-xs">{exp.location}</p>
                   </div>
                 </div>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {exp.responsibilities.map((resp, rIndex) => (
                     <li
                       key={rIndex}
                       className="flex items-start gap-3 text-gray-700 dark:text-gray-300"
                     >
-                      <span className="text-primary-500 mt-1">→</span>
-                      <span>{resp}</span>
+                      <svg className="w-5 h-5 text-secondary-500 dark:text-secondary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="leading-relaxed">{resp}</span>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -228,20 +283,20 @@ export default function AboutPage() {
             {certifications.map((cert, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 border-l-4 border-gradient-to-b from-primary-500 to-secondary-500 hover:shadow-lg transition-shadow duration-300"
+                className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 border-l-4 hover:shadow-lg transition-shadow duration-300"
                 style={{
-                  borderImage: "linear-gradient(to bottom, #a855f7, #14b8a6) 1"
+                  borderImage: "linear-gradient(to bottom, #64748b, #0d9488, #a855f7) 1"
                 }}
               >
                 <div className="flex items-start gap-4">
-                  <div className="bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/30 dark:to-secondary-900/30 rounded-lg p-3">
-                    <Award className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                  <div className="bg-gradient-to-br from-secondary-100 to-secondary-50 dark:from-secondary-900/30 dark:to-secondary-900/20 rounded-lg p-3">
+                    <Award className="w-6 h-6 text-secondary-600 dark:text-secondary-400" />
                   </div>
                   <div className="flex-1">
                     <h3 className="font-bold text-gray-900 dark:text-white mb-2">
                       {cert.name}
                     </h3>
-                    <p className="text-sm text-secondary-600 dark:text-secondary-400 font-semibold">
+                    <p className="text-sm text-primary-700 dark:text-primary-400 font-semibold">
                       {cert.issuer}
                     </p>
                     <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
@@ -252,9 +307,9 @@ export default function AboutPage() {
                         href={cert.credentialUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 mt-3 text-xs text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium transition-colors"
+                        className="inline-flex items-center gap-1 mt-3 text-xs text-secondary-600 dark:text-secondary-400 hover:text-secondary-700 dark:hover:text-secondary-300 font-medium transition-colors"
                       >
-                        View Credential
+                        {cert.credentialLabel || "View Credential"}
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     )}
@@ -322,9 +377,9 @@ export default function AboutPage() {
                 {siteConfig.languages.map((language, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-3 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 px-6 py-4 rounded-lg border border-primary-200 dark:border-primary-800"
+                    className="flex items-center gap-3 bg-gradient-to-r from-secondary-50 to-secondary-100 dark:from-secondary-900/20 dark:to-secondary-900/30 px-6 py-4 rounded-lg border border-secondary-200 dark:border-secondary-800"
                   >
-                    <Globe className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                    <Globe className="w-6 h-6 text-secondary-600 dark:text-secondary-400" />
                     <span className="text-lg font-semibold text-gray-900 dark:text-white">
                       {language}
                     </span>
@@ -337,7 +392,7 @@ export default function AboutPage() {
       </section>
 
       {/* Resume Download CTA */}
-      <section className="py-20 bg-gradient-to-r from-primary-600 to-secondary-500 dark:from-primary-700 dark:to-secondary-600">
+      <section className="py-20 bg-gradient-to-r from-primary-700 to-secondary-600 dark:from-primary-800 dark:to-secondary-700">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Ready to work together?
@@ -348,7 +403,7 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transform hover:-translate-y-0.5 transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-700 dark:text-primary-600 font-semibold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 transform hover:-translate-y-0.5 transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               Get In Touch
               <svg

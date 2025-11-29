@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "@/config/projectsData";
 import ProjectCard from "@/components/projects/ProjectCard";
 import ProjectGalleryLightbox from "@/components/projects/ProjectGalleryLightbox";
@@ -52,10 +53,10 @@ export default function ProjectsPage() {
               A collection of full-stack and AI-powered applications showcasing my technical skills and problem-solving abilities
             </p>
             <div className="flex flex-wrap gap-2 justify-center items-center text-sm text-gray-600 dark:text-gray-400">
-              <Code2 className="w-5 h-5 text-accent-600 dark:text-accent-400" />
+              <Code2 className="w-5 h-5 text-primary-500 dark:text-primary-400" />
               <span>{projects.length} Projects</span>
               <span className="mx-2">•</span>
-              <Github className="w-5 h-5 text-accent-600 dark:text-accent-400" />
+              <Github className="w-5 h-5 text-primary-500 dark:text-primary-400" />
               <span>All Open Source</span>
             </div>
           </div>
@@ -82,10 +83,10 @@ export default function ProjectsPage() {
                   <button
                     key={category.value}
                     onClick={() => setFilter(category.value)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 border-2 ${
                       isActive
-                        ? "bg-gradient-to-r from-accent-600 to-secondary-500 text-white shadow-lg scale-105"
-                        : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+                        ? "bg-primary-600 text-white shadow-lg scale-105 border-secondary-500"
+                        : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700 hover:border-secondary-300"
                     }`}
                   >
                     <Icon className="w-4 h-4" />
@@ -100,7 +101,7 @@ export default function ProjectsPage() {
               <select
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
-                className="w-full sm:w-auto px-4 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent-500 dark:focus:ring-accent-400"
+                className="w-full sm:w-auto px-4 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-secondary-500 dark:focus:ring-secondary-400"
               >
                 <option value="all">All Technologies</option>
                 {allTechnologies.map((tech) => (
@@ -122,7 +123,7 @@ export default function ProjectsPage() {
             <div className="mb-8 text-center">
               <p className="text-gray-600 dark:text-gray-400">
                 Showing{" "}
-                <span className="font-semibold text-accent-600 dark:text-accent-400">
+                <span className="font-semibold text-secondary-600 dark:text-secondary-400">
                   {filteredProjects.length}
                 </span>{" "}
                 {filteredProjects.length === 1 ? "project" : "projects"}
@@ -140,12 +141,22 @@ export default function ProjectsPage() {
 
             {/* Projects Grid */}
             {filteredProjects.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {filteredProjects.map((project) => (
-                  <div
-                    key={project.id}
-                    className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-700"
-                  >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={filter}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                >
+                  {filteredProjects.map((project, index) => (
+                    <motion.div
+                      key={project.id}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-700"
+                    >
                     {/* Project Image */}
                     <div 
                       className="relative h-52 bg-gray-50 dark:bg-gray-900 overflow-hidden group cursor-pointer"
@@ -172,7 +183,7 @@ export default function ProjectsPage() {
                         </>
                         ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                          <Code2 className="w-20 h-20 text-accent-300 dark:text-accent-700" />
+                          <Code2 className="w-20 h-20 text-secondary-300 dark:text-secondary-700" />
                         </div>
                       )}
                     </div>
@@ -227,7 +238,7 @@ export default function ProjectsPage() {
                             href={project.demo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-accent-600 to-secondary-500 text-white rounded-lg hover:from-accent-700 hover:to-secondary-600 transition-all shadow-md hover:shadow-lg"
+                            className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-lg hover:from-primary-700 hover:to-secondary-700 transition-all shadow-md hover:shadow-lg"
                           >
                             <ExternalLink className="w-4 h-4" />
                             <span className="text-sm font-medium">Live Demo</span>
@@ -235,9 +246,10 @@ export default function ProjectsPage() {
                         )}
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
             ) : (
               <div className="text-center py-12">
                 <Code2 className="w-16 h-16 text-gray-400 dark:text-gray-600 mx-auto mb-4" />
@@ -246,7 +258,7 @@ export default function ProjectsPage() {
                 </p>
                 <button
                   onClick={() => setFilter("all")}
-                  className="mt-4 px-6 py-2 bg-accent-600 text-white rounded-lg hover:bg-accent-700 transition-colors duration-200"
+                  className="mt-4 px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors duration-200"
                 >
                   Clear Filter
                 </button>
@@ -257,7 +269,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-accent-600 to-secondary-500 dark:from-accent-700 dark:to-secondary-600">
+      <section className="py-20 bg-gradient-to-r from-primary-700 to-secondary-600 dark:from-primary-800 dark:to-secondary-700">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Interested in working together?
@@ -268,7 +280,7 @@ export default function ProjectsPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-accent-600 font-semibold rounded-lg hover:bg-gray-100 transform hover:-translate-y-0.5 transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-700 dark:text-primary-600 font-semibold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 transform hover:-translate-y-0.5 transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               Get In Touch
               <svg

@@ -9,25 +9,19 @@ export const faqs: FAQ[] = [
     id: "roles",
     question: "What kind of roles are you looking for?",
     answer:
-      "I'm seeking Software Engineer and Full-Stack Developer positions, with a particular interest in AI-focused development roles. I'm excited about opportunities that allow me to leverage both my traditional software development skills (Java, Spring Boot, React) and my AI application development experience (Python, FastAPI, LangChain).",
-  },
-  {
-    id: "technologies",
-    question: "What technologies do you specialize in?",
-    answer:
-      "I specialize in Java, Spring Boot, React, Python, and FastAPI. I have hands-on experience with SQL databases (MySQL), NoSQL (MongoDB), RESTful API design, and AI tools like LangChain, LangGraph, and OpenAI. I'm also proficient in modern development tools including Git, GitHub, VS Code, Cursor IDE, and various cloud platforms.",
+      "I'm seeking roles such as Software Engineer, Full-Stack Developer, Backend Engineer, or AI Engineer — especially positions focused on building scalable applications, AI-driven features, and workflow automation.",
   },
   {
     id: "transition",
     question: "How did you transition into software development and AI?",
     answer:
-      "As a first-generation immigrant, I transitioned from a business background to software development through dedication and continuous learning. I started with coding bootcamps focused on front-end and Java full-stack development. As I built more projects, I discovered my passion for backend logic, problem-solving, and system design. This led me to deeper training: a Java Full-Stack program at Per Scholas, Year Up's IT track, and ASU's AZNext Vibe Coding AI Builder Architect program, where I learned to build AI-powered applications using Python, FastAPI, LangChain, and LangGraph.",
+      "As a first-generation immigrant, I had to rebuild my path in a new country. I began by teaching myself through online programming courses, which led me to a front-end bootcamp (React, JavaScript, HTML/CSS) and later a Java Full-Stack bootcamp where I learned Java, Spring Boot, REST APIs, SQL, and MySQL.\n\nBuilding projects helped me discover how much I enjoy backend logic and system design, so I continued growing through Year Up's IT track and Arizona State University's Vibe Coding AI Builder Architect Program, where I learned to build AI-powered applications using Python, FastAPI, Next.js, LangChain, LangGraph, and AWS Bedrock.\n\nMy transition into tech has been a step-by-step journey of continuous learning, persistence, embracing new tools with confidence, and believing in my ability to grow.",
   },
   {
     id: "bootcamps",
-    question: "What bootcamps and training have you completed?",
+    question: "What training or education have you completed?",
     answer:
-      "I've completed several comprehensive training programs: ASU Vibe Coding AI Builder Architect Program (AI development), Year Up United IT Support Training (currently ongoing through July 2026), Per Scholas Java Full-Stack Development Bootcamp, and Solely Coding Bootcamp (Web Development). Additionally, I hold a Bachelor's degree in Business Management from Henan Normal University.",
+      "I've completed several structured training programs that shaped my technical foundation and professional growth:\n\n• ASU Vibe Coding – AI Builder Architect Program\n~Python, Next.js, FastAPI, LangChain, LangGraph, AWS Bedrock, n8n automation\n• Per Scholas – Java Full-Stack Development\n~Java, Spring, Spring Boot, SQL, ORM, API development\n• Solely Coding Bootcamp – Front-End Development\n~React, JavaScript, modern UI fundamentals\n• Year Up – IT Support + Professional Skills Program\n~IT fundamentals, troubleshooting, communication, workplace readiness\n\nThese programs strengthened my full-stack development skills and gave me hands-on experience building AI-powered applications and workflows using modern engineering tools and best practices.",
   },
   {
     id: "projects",
@@ -45,7 +39,7 @@ export const faqs: FAQ[] = [
     id: "learning-next",
     question: "What are you most excited to learn next?",
     answer:
-      "I'm especially excited about agentic AI, workflow automation, and using tools like LangGraph to orchestrate multiple AI 'agents' that work together. I also want to keep improving my foundational skills in system design, testing, and scalable backend architecture. The intersection of traditional software engineering and AI is where I see the most potential for innovation.",
+      "I'm excited to dive deeper into agentic AI, workflow automation, and tools like LangGraph that enable multiple AI agents to work together. I also want to keep strengthening my core engineering skills, especially system design and scalable backend development.",
   },
   {
     id: "languages",
@@ -69,6 +63,12 @@ export const faqs: FAQ[] = [
     question: "How can I contact you?",
     answer:
       "You can reach me through the contact form on this website, connect with me on LinkedIn, check out my projects on GitHub, or email me directly at graceli9095@gmail.com. I'm always open to discussing new opportunities, collaborations, or just connecting with fellow developers!",
+  },
+  {
+    id: "origin",
+    question: "Where are you from originally?",
+    answer:
+      "I was born and raised in China. After finishing college, I spent a gap year in Australia, where I learned to communicate and work in English. I later moved to the United States, and each move shaped my perspective, resilience, and path into tech. The U.S. has since become my second home—the place where I rebuilt my career in technology.",
   },
 ];
 

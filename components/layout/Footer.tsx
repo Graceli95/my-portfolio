@@ -61,7 +61,7 @@ export default function Footer() {
           <div>
             <Link
               href="/"
-              className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent"
+              className="text-2xl font-bold bg-gradient-to-r from-secondary-600 to-secondary-500 bg-clip-text text-transparent"
             >
               {siteConfig.name}
             </Link>
@@ -83,7 +83,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-secondary-600 dark:hover:text-secondary-400 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -104,7 +104,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                  className="text-gray-600 dark:text-gray-400 hover:text-secondary-600 dark:hover:text-secondary-400 transition-colors"
                   aria-label={social.name}
                 >
                   {social.icon}

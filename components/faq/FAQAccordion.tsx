@@ -34,9 +34,30 @@ export default function FAQAccordion({ question, answer, isOpen, onToggle }: FAQ
         }`}
       >
         <div className="px-6 py-5 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-            {answer}
-          </p>
+          <div className="text-gray-700 dark:text-gray-300 leading-relaxed space-y-3">
+            {answer.split('\n\n').map((paragraph, index) => {
+              // Check if this is a bullet point item (starts with •)
+              if (paragraph.startsWith('•')) {
+                const lines = paragraph.split('\n');
+                return (
+                  <ul key={index} className="space-y-2.5 ml-4">
+                    {lines.map((line, lineIndex) => {
+                      if (line.startsWith('•')) {
+                        const content = line.substring(1).trim();
+                        return <li key={lineIndex} className="list-disc ml-4 mb-1">{content}</li>;
+                      } else if (line.startsWith('~')) {
+                        const content = line.substring(1).trim();
+                        return <li key={lineIndex} className="italic ml-8 text-sm list-none mb-2">{content}</li>;
+                      }
+                      return null;
+                    })}
+                  </ul>
+                );
+              }
+              // Regular paragraph
+              return <p key={index}>{paragraph}</p>;
+            })}
+          </div>
         </div>
       </div>
     </div>
