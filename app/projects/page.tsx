@@ -85,7 +85,7 @@ export default function ProjectsPage() {
                     onClick={() => setFilter(category.value)}
                     className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 border-2 ${
                       isActive
-                        ? "bg-primary-600 text-white shadow-lg scale-105 border-secondary-500"
+                        ? "bg-gradient-to-r from-primary-600 to-secondary-600 text-white shadow-lg scale-105 border-secondary-500"
                         : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700 hover:border-secondary-300"
                     }`}
                   >
