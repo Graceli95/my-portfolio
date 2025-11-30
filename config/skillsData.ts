@@ -191,7 +191,7 @@ export const certifications: Certification[] = [
     name: "Certificate in Agentic AI for Developers",
     issuer: "Pluralsight",
     date: "Nov 2025",
-    // credentialUrl: "/certifications/pluralsight-agentic-ai.pdf", // Add your certificate file to show link
+    credentialUrl: "/certifications/Agentic AI for Developers_Certificate.pdf",
   },
   {
     name: "Certificate in Java Full Stack Development",
